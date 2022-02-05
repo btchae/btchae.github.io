@@ -1,0 +1,302 @@
+<!DOCTYPE HTML>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>BRIAN CHAE - Blue Tarps</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+				<!-- Note: The "styleN" class below should match that of the banner element. -->
+					<header id="header" class="alt style2">
+						<a href="index.html" class="logo"><strong>Brian</strong> <span>Chae</span></a>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<ul class="links">
+							<li><a href="index.html">Home</a></li>
+							<li><a href="about.html">About</a></li>
+							<li><a href="education.html">Education</a></li>
+							<li><a href="portfolio.html">Portfolio</a></li>
+							<li><a href="#contact">Contact</a></li>
+						</ul>
+					</nav>
+
+				<!-- Banner -->
+				<!-- Note: The "styleN" class below should match that of the header element. -->
+					<section id="banner" class="style2">
+						<div class="inner">
+							<span class="image">
+								<img src="images/pic07.jpg" alt="" />
+							</span>
+							<header class="major">
+								<h1>Disaster Relief Project</h1>
+							</header>
+							<div class="content">
+								<p>Also known as the Blue Tarps Projet</p>
+							</div>
+						</div>
+					</section>
+
+				<!-- Main -->
+					<div id="main">
+						<!-- Two -->
+							<section id="two" class="spotlights">
+								<section>
+								<div>
+									<header>
+										<h2>Table of Contents</h2>
+									</header>
+									<ol>
+										<a href="#blue_intro"><li>Introduction</li></a>
+										<a href=#blue_methods><li>Methods</li></a>
+										<a href=#blue_model_fitting><li>Model Fitting</li></a>
+											<ul>
+												<li>KNN</li>
+												<li>LDA</li>
+												<li>QDA</li>
+												<li>Logistic Regression</li>
+												<li>Random Forest</li>
+												<li>SVM</li>
+											</ul>
+										<a href=#blue_model_performance><li>Model Performance</li></a>
+											<ul>
+												<li>KNN</li>
+												<li>LDA</li>
+												<li>QDA</li>
+												<li>Logistic Regression</li>
+												<li>Random Forest</li>
+												<li>SVM</li>
+											</ul>
+										<a href=#blue_conclusion><li>Conclusion</li></a>
+									</ol>
+									</div>
+									<div class="content">
+										<div id="blue_intro" class="inner">
+											<header class="major">
+												<h2>Project Intro</h2>
+											</header>
+											<p>This was our final project for Statistical Learning. The project uses images from Haiti after the 2010 earthquake. Aid efforts were trying to quickly identify blue tarps as locations with a lot of displaced people and the goal was to provide food and water to the people in these concentrated locations who need aid the most. The goal of the project was to find the best performing algorithm for detecting blue tarps in images of Haiti from above. The full code can be found on my GitHub <a href="https://github.com/btchae/blue-tarps">here</a>.</p>
+										</div>
+										<div id="blue_methods" class="inner">
+											<header class="major">
+												<h2>Methods</h2>
+											</header>
+												<ul>
+													<li>R and RStudio were used for this project. Microsoft Excel was also used for cleaning and processing the holdout data.</li>
+													<li>The classification methods were: KNN, LDA, QDA, Logistic Regression, Random Forest and SVM. Largely used caret, dplyr and ROCR for all of these algorithms and dplyr</li>
+													<li>Data was preprocessed using “center” and “scale” for KNN and SVM.</li>
+													<li>Changed the thresholds for some of the algorithms based on whether or not I was satisfied with the false and true positive rates.</li>
+													<li>Most of the pre-processing was combining and cleaning the various tables of the holdout data into one spreadsheet. Added the class “tarp” to the data for the purpose of prediction</li>
+													<li>Split the training data into a test-train split of .25-.75. Trained the training section and had them predict the testing section over 10 folds for cross validation. Then these algorithms had adjusted thresholds if necessary and then ultimately were used to predict the holdout data.</li>
+												</ul>
+										</div>
+									</div>
+								</section>
+							</section>
+						<!--Two-->		
+							<section>
+								<div class="content">
+									<div id="blue_model_fitting" class="inner">
+										<header class="major">
+											<h2>Model Fitting</h2>
+										</header>
+											<table>
+												<thead>
+	  												<tr>
+	    													<th>Method</th>
+		    												<th>Accuracy on Train Data</th>
+		    												<th>TP Rate</th>
+		    												<th>FP Rate</th>
+	  												</tr>
+												</thead>
+												<tbody>
+		  											<tr>
+		    												<td>KNN(K=9)</td>
+		    												<td>99.76%</td>
+		    												<td>96.02%</td>
+		    												<td>0.12%</td>
+		  											</tr>
+		  											<tr>
+		    												<td>LDA</td>
+													    	<td>98.36%</td>
+													    	<td>77.69%</td>
+													    	<td>0.96%</td>
+													 </tr>
+													 <tr>
+													    	<td>QDA</td>
+													    	<td>98.94%</td>
+													    	<td>89.24%</td>
+													    	<td>0.74%</td>
+													 </tr>
+													 <tr>
+													    	<td>Logistic Regression</td>
+													    	<td>99.13%</td>
+													    	<td>94.42%</td>
+													    	<td>0.44%</td>
+													 </tr>
+													 <tr>
+													    	<td>Random Forest<br>(mtry=1, ntree=500)</td>
+													    	<td>99.47%</td>
+													    	<td>96.71%</td>
+													    	<td>0.44%</td>
+													 </tr>
+													 <tr>
+													    	<td>SVM<br>(Sigma= 2, C=100)</td>
+													    	<td>99.62%</td>
+													    	<td>95.82%</td>
+													    	<td>0.14%</td>
+		  											</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+									<div class="content">
+										<div id="blue_model_performance" class="inner">
+											<header class="major">
+												<h2>Model Performance</h2>
+											</header>
+											<table>
+											<thead>
+											  <tr>
+											    <th>Method</th>
+											    <th>Accuracy on Train Data</th>
+											    <th>TP Rate</th>
+											    <th>FP Rate</th>
+											  </tr>
+											</thead>
+											<tbody>
+											  <tr>
+											    <td>KNN(K=9)</td>
+											    <td>99.31%</td>
+											    <td>88.32</td>
+											    <td>0.61%</td>
+											  </tr>
+											  <tr>
+											    <td>LDA</td>
+											    <td>98.27%</td>
+											    <td>80.57%</td>
+											    <td>1.61%</td>
+											  </tr>
+											  <tr>
+											    <td>QDA</td>
+											    <td>98.06%</td>
+											    <td>83.2%</td>
+											    <td>1.83%</td>
+											  </tr>
+											  <tr>
+											    <td>Logistic Regression</td>
+											    <td>98.99%</td>
+											    <td>98.83%</td>
+											    <td>1.01%</td>
+											  </tr>
+											  <tr>
+											    <td>Random Forest<br>(mtry=1, ntree=500)</td>
+											    <td>99.47%</td>
+											    <td>74.1%</td>
+											    <td>0.35%</td>
+											  </tr>
+											  <tr>
+											    <td>SVM<br>(Sigma= 2, C=100)</td>
+											    <td>98.8%</td>
+											    <td>42.46%</td>
+											    <td>0.79%</td>
+											  </tr>
+											</tbody>
+											</table>
+										</div>
+									</div>
+									<div class="content">
+										<div id="blue_conclusion" class="inner">
+											<header class="major">
+												<h2>Conclusion</h2>
+											</header>
+											<ul>
+											<li>I decided that Logistic Regression performed the best. The two main things I valued were high true positive rates, and low false positive rates. I aimed for a false positive rate around 1% and a true positive rate around 90% as ideal. I would put the ranking at 1. Logistic Regression 2. KNN 3. LDA 4. QDA 5. Random Forest 6. SVM. While SVM and Random Forest had the lowest false positive rates, I could not look past their poor true positive rates which put them at the bottom of the list.</li>
+											<li>I decided that false positives were the worst case scenario in this situation. A true positive being the best case scenario because that means people who needed aid received it. While a true negative prevents resources from being wasted. A false negative is an unfortunate situation because people who could have received aid did not, but I view that better than a false positive because a false positive helps no one while also wasting limited resources. So I made an effort to reduce false positive rates to avoid what I thought to be the worst possible scenario in this situation. It’s a delicate ethical balance.</li>
+											<li>The discrepancy between performance across training and hold out data sets came as a surprise to me. It did not seem consistent for the models between datasets. I imagine the poorer performing algorithms were overfit for the training dataset. Should be something to note when deciding thresholds.</li>
+											<li>I think it should be noted that a small amount of the data is actually blue tarps. I think this may have impacted the accuracy of algorithms such as SVM and Random Forest. They both boasted high overall accuracy rates but low true positive rates. That innate skew in data points may have played a role in the discrepancy between their accuracy and their true positive rates.</li>
+											</ul>
+										</div>
+									</div>
+							</section>
+					</div>
+
+				<!-- Contact -->
+					<section id="contact">
+						<div class="inner">
+							<section>
+								<form method="post" action="mailto:bchae17@gmail.com">
+									<div class="fields">
+										<div class="field half">
+											<label for="name">Name</label>
+											<input type="text" name="name" id="name" />
+										</div>
+										<div class="field half">
+											<label for="email">Email</label>
+											<input type="text" name="email" id="email" />
+										</div>
+										<div class="field">
+											<label for="message">Message</label>
+											<textarea name="message" id="message" rows="6"></textarea>
+										</div>
+									</div>
+									<ul class="actions">
+										<li><input type="submit" value="Send Message" class="primary" /></li>
+										<li><input type="reset" value="Clear" /></li>
+									</ul>
+								</form>
+							</section>
+							<section class="split">
+								<section>
+									<div class="contact-method">
+										<span class="icon solid alt fa-envelope"></span>
+										<h3>Email</h3>
+										<a href="#">information@untitled.tld</a>
+									</div>
+								</section>
+							</section>
+						</div>
+					</section>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<ul class="icons">
+								<li><a href="https://github.com/btchae" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+								<li><a href="https://www.linkedin.com/in/brian-chae/" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+							</ul>
+							<ul class="copyright">
+								<li>&copy; 2022 Brian Chae</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
